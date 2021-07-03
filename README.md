@@ -1,64 +1,115 @@
-Install a node for your coin on Ubuntu Server 18.04 with the following tutorial.
+#! /bin/sh
+## DO NOT EDIT - This file generated from ./build-aux/ltmain.in
+##               by inline-source v2014-01-03.01
 
-Update your Ubuntu server with the following command:
+# libtool (GNU libtool) 2.4.6
+# Provide generalized library-building support services.
+# Written by Gordon Matzigkeit <gord@gnu.ai.mit.edu>, 1996
 
-sudo apt-get update && sudo apt-get upgrade -y
+# Copyright (C) 1996-2015 Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.  There is NO
+# warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-Install the required dependencies with the following command:
+# GNU Libtool is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# As a special exception to the GNU General Public License,
+# if you distribute this file as part of a program or library that
+# is built using GNU Libtool, you may include this file under the
+# same distribution terms that you use for the rest of that program.
+#
+# GNU Libtool is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libboost-all-dev libboost-program-options-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler unzip software-properties-common cmake -y
 
-Install the repository ppa:bitcoin/bitcoin with the following command:
+PROGRAM=libtool
+PACKAGE=libtool
+VERSION="2.4.6 Debian-2.4.6-2"
+package_revision=2.4.6
 
-sudo add-apt-repository ppa:bitcoin/bitcoin
 
-Confirm the installation of the repository by pressing on the enter key. enter
+## ------ ##
+## Usage. ##
+## ------ ##
 
-Install Berkeley DB with the following command:
+# Run './libtool --help' for help with using this script from the
+# command line.
 
-sudo apt-get update && sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 
-Download the Linux daemon for your wallet with the following command:
+## ------------------------------- ##
+## User overridable command paths. ##
+## ------------------------------- ##
 
-wget "https://dl.walletbuilders.com/download?customer=c3a792abc002e3302fc731490c956d6de11811bc9c16474a09&filename=blackdiamondcoin-daemon-linux.tar.gz" -O blackdiamondcoin-daemon-linux.tar.gz
+# After configure completes, it has a better idea of some of the
+# shell tools we need than the defaults used by the functions shared
+# with bootstrap, so set those here where they can still be over-
+# ridden by the user, but otherwise take precedence.
 
-Extract the tar file with the following command:
+: ${AUTOCONF="autoconf"}
+: ${AUTOMAKE="automake"}
 
-tar -xzvf blackdiamondcoin-daemon-linux.tar.gz
 
-Download the Linux tools for your wallet with the following command:
+## -------------------------- ##
+## Source external libraries. ##
+## -------------------------- ##
 
-wget "https://dl.walletbuilders.com/download?customer=c3a792abc002e3302fc731490c956d6de11811bc9c16474a09&filename=blackdiamondcoin-qt-linux.tar.gz" -O blackdiamondcoin-qt-linux.tar.gz
+# Much of our low-level functionality needs to be sourced from external
+# libraries, which are installed to $pkgauxdir.
 
-Extract the tar file with the following command:
+# Set a version string for this script.
+scriptversion=2015-01-20.17; # UTC
 
-tar -xzvf blackdiamondcoin-qt-linux.tar.gz
+# General shell script boiler plate, and helper functions.
+# Written by Gary V. Vaughan, 2004
 
-Type the following command to install the daemon and tools for your wallet:
+# Copyright (C) 2004-2015 Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.  There is NO
+# warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-sudo mv blackdiamondcoind blackdiamondcoin-cli blackdiamondcoin-tx /usr/bin/
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
 
-Create the data directory for your coin with the following command:
+# As a special exception to the GNU General Public License, if you distribute
+# this file as part of a program or library that is built using GNU Libtool,
+# you may include this file under the same distribution terms that you use
+# for the rest of that program.
 
-mkdir $HOME/.blackdiamondcoin
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNES FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
 
-Open nano.
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-nano $HOME/.blackdiamondcoin/blackdiamondcoin.conf -t
+# Please report bugs or propose patches to gary@gnu.org.
 
-Paste the following into nano.
 
-rpcuser=rpc_blackdiamondcoin
-rpcpassword=dR2oBQ3K1zYMZQtJFZeAerhWxaJ5Lqeq9J2
-rpcbind=0.0.0.0
-rpcallowip=127.0.0.1
-listen=1
-server=1
-txindex=1
-daemon=1
+## ------ ##
+## Usage. ##
+## ------ ##
 
-Save the file with the keyboard shortcut ctrl + x.
+# Evaluate this file near the top of your script to gain access to
+# the functions and variables defined here:
+#
+#   . `echo "$0" | ${SED-sed} 's|[^/]*$||'`/build-aux/funclib.sh
+#
+# If you need to override any of the default environment variable
+# settings, do that before evaluating this file.
 
-Type the following command to start your node:
 
-blackdiamondcoind
+## -------------------- ##
+## Shell normalisation. ##
+## -------------------- ##
+
+# Some shells need a little help to be as Bourne compatible as possible.
+# Before doing anything else, make sure all that help has been provided!
