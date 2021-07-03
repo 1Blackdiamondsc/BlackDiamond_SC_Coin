@@ -1,6 +1,5 @@
 # BlackDiamond_SC_Coin
 #Coin properties
-#Purchase type	Paid coin
 #Compiling OS	Ubuntu 18.04 LTS
 #Source branch	0.21
 #Algorithm	SHA-256 Proof of Work
