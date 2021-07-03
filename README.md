@@ -1,36 +1,64 @@
-# This is a basic workflow to help you get started with Actions
+Install a node for your coin on Ubuntu Server 18.04 with the following tutorial.
 
-name: CI
+Update your Ubuntu server with the following command:
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+sudo apt-get update && sudo apt-get upgrade -y
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+Install the required dependencies with the following command:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libboost-all-dev libboost-program-options-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler unzip software-properties-common cmake -y
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+Install the repository ppa:bitcoin/bitcoin with the following command:
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+sudo add-apt-repository ppa:bitcoin/bitcoin
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+Confirm the installation of the repository by pressing on the enter key. enter
+
+Install Berkeley DB with the following command:
+
+sudo apt-get update && sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
+
+Download the Linux daemon for your wallet with the following command:
+
+wget "https://dl.walletbuilders.com/download?customer=c3a792abc002e3302fc731490c956d6de11811bc9c16474a09&filename=blackdiamondcoin-daemon-linux.tar.gz" -O blackdiamondcoin-daemon-linux.tar.gz
+
+Extract the tar file with the following command:
+
+tar -xzvf blackdiamondcoin-daemon-linux.tar.gz
+
+Download the Linux tools for your wallet with the following command:
+
+wget "https://dl.walletbuilders.com/download?customer=c3a792abc002e3302fc731490c956d6de11811bc9c16474a09&filename=blackdiamondcoin-qt-linux.tar.gz" -O blackdiamondcoin-qt-linux.tar.gz
+
+Extract the tar file with the following command:
+
+tar -xzvf blackdiamondcoin-qt-linux.tar.gz
+
+Type the following command to install the daemon and tools for your wallet:
+
+sudo mv blackdiamondcoind blackdiamondcoin-cli blackdiamondcoin-tx /usr/bin/
+
+Create the data directory for your coin with the following command:
+
+mkdir $HOME/.blackdiamondcoin
+
+Open nano.
+
+nano $HOME/.blackdiamondcoin/blackdiamondcoin.conf -t
+
+Paste the following into nano.
+
+rpcuser=rpc_blackdiamondcoin
+rpcpassword=dR2oBQ3K1zYMZQtJFZeAerhWxaJ5Lqeq9J2
+rpcbind=0.0.0.0
+rpcallowip=127.0.0.1
+listen=1
+server=1
+txindex=1
+daemon=1
+
+Save the file with the keyboard shortcut ctrl + x.
+
+Type the following command to start your node:
+
+blackdiamondcoind
