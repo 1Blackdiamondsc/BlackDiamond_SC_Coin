@@ -1,32 +1,36 @@
-# BlackDiamond_SC_Coin
-#Coin properties
-#Compiling OS	Ubuntu 18.04 LTS
-#Source branch	0.21
-#Algorithm	SHA-256 Proof of Work
-#Coin name	BlackDiamondCoin
-#Coin abbreviation	BDC
-#Public address letter	B
-#Public address letter testnet	B
-#Coin unit	Karat
-#RPC port	38709
-#P2P port	38710
-#Block reward	50 coins
-#Block halving	3100000 blocks
-#Coin supply	320000000 coins
-#Premine	10000000 coins
-#Website URL	https://blackdiamondscinc.tech
-#Github URL	https://github.com/1Blackdiamondsc/Bl
+# This is a basic workflow to help you get started with Actions
 
+name: CI
 
-Advanced properties
-#Coinbase maturity	20 ( + 1 default confirmation) blocks
-#Target spacing	5 minutes
-#Target timespan	10 minutes
-#Transaction confirmations	6 ( + 1 default confirmation) blocks
-#Timestamp	The Time 02 Jul 2021 Stone that the builder refused
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-#Node 1	
-#node2.walletbuilders.com
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
-#Last block with reward	102300000
-#Time until last block	972 years, 6 mo
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
