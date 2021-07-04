@@ -48,3 +48,4 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+![FullColor_1280x1024_72dpi (2)](https://user-images.githubusercontent.com/73549208/124374627-f2052680-dc6a-11eb-92dd-d3097e4ef595.png)
